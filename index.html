@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>어린이집 차량 시간표</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#8a2be2"/>
+</head>
+<body>
+    <div id="app">
+        <section id="main-screen" class="screen active">
+            <div class="logo">
+                <img src="images/logo.png" alt="어린이집 차량 시간표 로고">
+            </div>
+            <div class="button-container">
+                <button id="pickup-button" class="main-button">
+                    <img src="images/pickup-button.png" alt="등원">
+                </button>
+                <button id="dropoff-button" class="main-button">
+                    <img src="images/dropoff-button.png" alt="하원">
+                </button>
+                <button id="manage-button" class="main-button">
+                    <img src="images/manage-button.png" alt="관리">
+                </button>
+            </div>
+            <div id="screen-lock-status" class="status-indicator"></div>
+        </section>
+
+        <section id="pickup-schedule-screen" class="screen">
+            <h2 class="screen-title">등원 시간표 (오전)</h2>
+            <div class="departure-time">출발 시간: <span id="pickup-departure-time"></span></div>
+            <ul id="pickup-list" class="child-list"></ul>
+            <button class="back-button">X</button>
+        </section>
+
+        <section id="dropoff-schedule-screen" class="screen">
+            <h2 class="screen-title">하원 시간표 (오후)</h2>
+            <div class="departure-time">출발 시간: <span id="dropoff-departure-time"></span></div>
+            <ul id="dropoff-list" class="child-list"></ul>
+            <button class="back-button">X</button>
+        </section>
+
+        <section id="manage-screen" class="screen">
+            <h2 class="screen-title">관리</h2>
+            <div class="setting-item">
+                <label for="set-pickup-time">등원 출발 시간:</label>
+                <input type="text" id="set-pickup-time" placeholder="예: 08:30" class="input-field">
+                <button id="save-pickup-time" class="action-button">저장</button>
+            </div>
+            <div class="setting-item">
+                <label for="set-dropoff-time">하원 출발 시간:</label>
+                <input type="text" id="set-dropoff-time" placeholder="예: 16:00" class="input-field">
+                <button id="save-dropoff-time" class="action-button">저장</button>
+            </div>
+            <h3>아이 목록</h3>
+            <ul id="child-management-list" class="child-list"></ul>
+            <button id="add-child-button" class="action-button add-button">아이 추가</button>
+            <button class="back-button">X</button>
+        </section>
+
+        <section id="child-form-screen" class="screen">
+            <h2 class="screen-title" id="child-form-title">아이 추가</h2>
+            <div class="form-group">
+                <label for="child-name">이름:</label>
+                <input type="text" id="child-name" class="input-field" placeholder="예: 김철수">
+            </div>
+            <div class="form-group">
+                <label for="child-pickup-time">등원 시간 (HH:MM):</label>
+                <input type="text" id="child-pickup-time" class="input-field" placeholder="예: 08:45">
+                <div class="error-message" id="pickup-time-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="child-pickup-location">등원 장소:</label>
+                <input type="text" id="child-pickup-location" class="input-field" placeholder="예: 아파트 정문">
+            </div>
+            <div class="form-group">
+                <label for="child-dropoff-time">하원 시간 (HH:MM):</label>
+                <input type="text" id="child-dropoff-time" class="input-field" placeholder="예: 17:00">
+                <div class="error-message" id="dropoff-time-error"></div>
+            </div>
+            <div class="form-group">
+                <label for="child-dropoff-location">하원 장소:</label>
+                <input type="text" id="child-dropoff-location" class="input-field" placeholder="예: 빌라 앞">
+            </div>
+            <button id="save-child-button" class="action-button">저장</button>
+            <button class="back-button">X</button>
+        </section>
+    </div>
+
+    <div id="confirm-popup" class="popup-overlay">
+        <div class="popup-content">
+            <p id="confirm-message"></p>
+            <button id="confirm-yes" class="popup-button">확인</button>
+            <button id="confirm-no" class="popup-button">취소</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
